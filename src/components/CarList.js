@@ -4,7 +4,10 @@ import { removeCar } from "../store";
 
 function CarList() {
   const dispatch = useDispatch();
-  const { cars, search } = useSelector((store) => store.cars);
+  const [{ cars, search }, { name }] = useSelector((store) => [
+    store.cars,
+    store.form,
+  ]);
 
   const handleRemoveCar = (id) => {
     dispatch(removeCar(id));
@@ -18,7 +21,7 @@ function CarList() {
         className="flex items-center gap-4 border-b last:border-none mb-3"
         onClick={() => handleRemoveCar(car.id)}
       >
-        <span className={`font-medium`}>
+        <span className={car.name.includes(name) && name ? "font-bold" : "font-normal"}>
           {car.name} - ${car.cost}
         </span>
         <button className="rounded-md bg-red-400 h-8 w-8 ml-auto">X</button>
