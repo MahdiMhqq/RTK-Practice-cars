@@ -14,14 +14,18 @@ function CarList() {
   };
 
   const renderedCars = cars
-    .filter((car) => car.name.includes(search.toLowerCase()))
+    .filter((car) => car.name.toLowerCase().includes(search.toLowerCase()))
     .map((car) => (
       <div
         key={car.id}
         className="flex items-center gap-4 border-b last:border-none mb-3"
         onClick={() => handleRemoveCar(car.id)}
       >
-        <span className={car.name.includes(name) && name ? "font-bold" : "font-normal"}>
+        <span
+          className={
+            car.name.includes(name) && name ? "font-bold" : "font-normal"
+          }
+        >
           {car.name} - ${car.cost}
         </span>
         <button className="rounded-md bg-red-400 h-8 w-8 ml-auto">X</button>

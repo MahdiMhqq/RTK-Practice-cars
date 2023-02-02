@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 function CarValue() {
   const { cars, search } = useSelector((store) => store.cars);
   const value = cars
-    .filter((car) => car.name.includes(search.toLowerCase()))
+    .filter((car) => car.name.toLowerCase().includes(search.toLowerCase()))
     .reduce((acc, curr) => (acc += Number(curr.cost)), 0);
 
   return (
