@@ -5,12 +5,12 @@ import CarValue from "./components/CarValue";
 
 function App() {
   return (
-    <>
+    <div className="px-3 py-4">
       <CarForm />
       <CarSearch />
       <CarList />
       <CarValue /> 
-    </>
+    </div>
   );
 }
 
